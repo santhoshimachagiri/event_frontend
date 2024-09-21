@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">EaseEvents</a>
+    
+    <!-- Search bar -->
+  <form class="form-inline my-2 my-lg-0 ml-auto" (submit)="filterEvents(searchInput.value)">
+    <input
+      #searchInput
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search events"
+      aria-label="Search"
+    />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      <i class="fas fa-search"></i> <!-- Search icon -->
+    </button>
+  </form>
+    
+    <!-- Notification and Profile section -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="navigateToNotifications()">
+          <i class="fas fa-bell"></i> <!-- Notification icon -->
+          <span class="badge badge-danger">3</span> <!-- Notification badge -->
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="navigateToProfile()">
+          <i class="fas fa-user-circle"></i> <!-- Profile icon -->
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+
+<div class="container">
+    <h2>Manage Events</h2>
+    <p>Create, update, and organize all your events.</p>
+  
+    <!-- Button to create a new event -->
+    <div class="create-event-btn">
+      <button class="btn btn-success" (click)="createEvent()">Create New Event</button>
+    </div>
+  
+    <!-- List of existing events -->
+    <div class="event-list">
+      <div class="event-card" *ngFor="let event of events">
+        <h3>{{ event.name }}</h3>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Time:</strong> {{ event.time }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Cost:</strong> {{ event.cost | currency }}</p>
+        <button class="btn btn-primary" (click)="updateEvent(event)">Update Event</button>
+      </div>
+    </div>
+  </div>
+  
