@@ -1,1 +1,53 @@
-<p>user works!</p>
+<div class="user-management">
+    <h2>Manage Users</h2>
+  
+    <!-- Form to invite a new user -->
+    <div class="invite-user">
+      <h3>Invite New User</h3>
+      <label>
+        Name:
+        <input type="text" [(ngModel)]="newUser.name" placeholder="Enter name" />
+      </label>
+      <label>
+        Email:
+        <input type="email" [(ngModel)]="newUser.email" placeholder="Enter email" />
+      </label>
+      <label>
+        Role:
+        <select [(ngModel)]="newUser.role">
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+      </label>
+      <button (click)="inviteUser()">Invite User</button>
+    </div>
+  
+    <!-- List of existing users -->
+    <div class="user-list">
+      <h3>User List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <select [(ngModel)]="user.role" (change)="updateRole(user, user.role)">
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+              </select>
+            </td>
+            <td>
+              <button (click)="removeUser(i)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
