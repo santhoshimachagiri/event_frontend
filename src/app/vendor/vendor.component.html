@@ -1,1 +1,13 @@
-<p>vendor works!</p>
+<div class="container">
+  <h2>{{ category }} Vendors</h2>
+  
+  <!-- Vendor List -->
+  <div class="vendor-list">
+    <div class="vendor-card" *ngFor="let vendor of vendors">
+      <h4>{{ vendor.name }}</h4>
+      <p>Category: {{ vendor.category }}</p> <!-- Displaying the category -->
+      <p>Rating: {{ vendor.rating }} ★</p>
+      <p>Cost: {{ vendor.cost || 'N/A' }}</p> <!-- Displaying cost, defaulting to 'N/A' if not available -->
+    </div>
+  </div>
+</div>
